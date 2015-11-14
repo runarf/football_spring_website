@@ -36,6 +36,7 @@
 					<th>Image</th>
 					<th>Votes</th>
 					<th>Upvote/Downvote</th>
+					<th>Delete</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -49,6 +50,9 @@
 					<td>
 						<button type="button" ng-click="ctrl.upvotePlayer(p.id)">Upvote</button>
 						<button type="button" ng-click="ctrl.downvotePlayer(p.id)">Downvote</button>
+					</td>
+					<td>
+						<button type="button" ng-click="ctrl.remove(p.id)">Remove</button>
 					</td>
 				</tr>
 			</tbody>

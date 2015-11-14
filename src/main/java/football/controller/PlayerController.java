@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import football.model.Player;
 import football.service.PlayerService;
-import model.Player;
 
 @RestController
 public class PlayerController {
@@ -83,6 +83,20 @@ public class PlayerController {
 		
 		playerService.downvotePlayer(currentPlayer);
 		return new ResponseEntity<Player>(currentPlayer, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/player/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<Player> deletePlayer(@PathVariable("id") long id) {
+		System.out.println("Fetching and deleting player with id " + id);
+		
+		Player player = playerService.findById(id);
+		if(player == null) {
+			System.out.println("Unable to delete. Player with id " + id + " not found");
+			return new ResponseEntity<Player>(HttpStatus.NOT_FOUND);
+		}
+		
+		playerService.deletePlayerById(id);
+		return new ResponseEntity<Player>(HttpStatus.NO_CONTENT);
 	}
 
 }

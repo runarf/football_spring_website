@@ -1,13 +1,14 @@
 package football.service;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import model.Player;
+import football.model.Player;
 
 @Service("playerService")
 @Transactional
@@ -46,6 +47,26 @@ public class PlayerServiceImpl implements PlayerService {
 		players.add(player);
 	}
 	
+	public void upvotePlayer(Player player) {
+		long votes = player.getVotes();
+		player.setVotes(votes + 1);
+	}
+
+
+	public void downvotePlayer(Player player) {
+		long votes = player.getVotes();
+		player.setVotes(votes - 1);
+	}
+	
+	public void deletePlayerById(long id) {
+		for (Iterator<Player> iterator = players.iterator(); iterator.hasNext(); ) {
+			Player player = iterator.next();
+			if(player.getId() == id) {
+				iterator.remove();
+			}
+		}
+	}
+	
 	public boolean isPlayerExist(Player player) {
 		return findByName(player.getName()) != null;
 	}
@@ -59,14 +80,5 @@ public class PlayerServiceImpl implements PlayerService {
 	}
 
 	
-	public void upvotePlayer(Player player) {
-		long votes = player.getVotes();
-		player.setVotes(votes + 1);
-	}
 
-
-	public void downvotePlayer(Player player) {
-		long votes = player.getVotes();
-		player.setVotes(votes - 1);
-	}
 }

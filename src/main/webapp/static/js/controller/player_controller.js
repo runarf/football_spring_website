@@ -47,6 +47,16 @@ App.controller('PlayerController', ['$scope', 'PlayerService', function($scope, 
 				}
 		);
 	}
+	
+	self.deletePlayer = function(id) {
+		PlayerService.deletePlayer(id)
+		.then (
+				self.fetchAllPlayers,
+				function(errResponse) {
+					console.error('Error while deleting player.');
+				}
+		);
+	}
 
 	self.fetchAllPlayers();
 
@@ -56,6 +66,17 @@ App.controller('PlayerController', ['$scope', 'PlayerService', function($scope, 
 			self.createPlayer(self.player);
 		}
 		self.reset();
+	}
+	
+	self.remove = function(id) {
+		console.log('id to be deleted ', id);
+		for (var i = 0; i < self.players.length; i++) {
+			if (self.players[i].id == id) {
+				self.reset();
+				break;
+			}
+		}
+		self.deletePlayer(id);
 	}
 
 	self.reset = function() {

@@ -1,4 +1,4 @@
-package model;
+package football.model;
 
 public class Player {
 	private long id;

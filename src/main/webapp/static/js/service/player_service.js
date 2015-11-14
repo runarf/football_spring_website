@@ -52,6 +52,19 @@ App.factory('PlayerService', ['$http', '$q', function($http, $q) {
 						return $q.reject(errResponse);
 					}
 			);
+		},
+		
+		deletePlayer: function(id) {
+			return $http.delete('http://localhost:8080/football/player/' + id)
+			.then(
+					function(response) {
+						return response.data;
+					},
+					function(errResponse) {
+						console.error('Error while deleting player');
+						return $q.reject(errResponse);
+					}
+			);
 		}
 	};
 }]);
