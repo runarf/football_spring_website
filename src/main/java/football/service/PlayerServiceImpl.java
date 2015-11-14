@@ -57,4 +57,16 @@ public class PlayerServiceImpl implements PlayerService {
 		players.add(new Player(counter.incrementAndGet(), "Lionel Messi", "Barcelona", "Argentinian", "http://images.performgroup.com/di/library/GOAL_INTERNATIONAL/2d/4b/lionel-messi-thomas-muller-barcelona-bayern-munich-champions-league-06052015_1dzp64uc807ve19p95c28l0daq.jpg?t=718739109&w=620&h=430" ));
 		return players;
 	}
+
+	
+	public void upvotePlayer(Player player) {
+		long votes = player.getVotes();
+		player.setVotes(votes + 1);
+	}
+
+
+	public void downvotePlayer(Player player) {
+		long votes = player.getVotes();
+		player.setVotes(votes - 1);
+	}
 }

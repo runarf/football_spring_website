@@ -6,6 +6,7 @@ public class Player {
 	private String team;
 	private String nationality;
 	private String image;
+	private long votes;
 	
 	public Player() {
 		id = 0;
@@ -17,6 +18,7 @@ public class Player {
 		this.team = team;
 		this.nationality = nationality;
 		this.image = image;
+		this.votes = 0;
 	}
 	
 	public long getId() {
@@ -58,6 +60,15 @@ public class Player {
 	public void setImage(String image) {
 		this.image = image;
 	}
+	
+	public Long getVotes() {
+		return votes;
+	}
+	
+	public void setVotes(Long votes) {
+		this.votes = votes;
+	}
+	
 	
 	@Override
 	public int hashCode() {

@@ -26,9 +26,30 @@ App.controller('PlayerController', ['$scope', 'PlayerService', function($scope, 
 				}
 		);
 	};
+
+	self.upvotePlayer = function(id) {
+		console.log("Upvoting player");
+		PlayerService.upvotePlayer(id)
+		.then(
+				self.fetchAllPlayers,
+				function(errResponse) {
+					console.error('Error while upvoting player.');
+				}
+		);
+	};
 	
+	self.downvotePlayer = function(id) {
+		PlayerService.downvotePlayer(id)
+		.then(
+				self.fetchAllPlayers,
+				function(errResponse) {
+					console.error('Error while downvoting player.');
+				}
+		);
+	}
+
 	self.fetchAllPlayers();
-	
+
 	self.submit = function() {
 		if(self.player.id == null) {
 			console.log('Saving new player', self.player);
@@ -36,7 +57,7 @@ App.controller('PlayerController', ['$scope', 'PlayerService', function($scope, 
 		}
 		self.reset();
 	}
-	
+
 	self.reset = function() {
 		self.player = { id: null, name: '', team: '', nationality: '' };
 		$scope.myForm.$setPristine();

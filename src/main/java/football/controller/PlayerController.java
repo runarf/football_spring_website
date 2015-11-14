@@ -58,5 +58,31 @@ public class PlayerController {
 		headers.setLocation(ucBuilder.path("/player/{id}").buildAndExpand(player.getId()).toUri());
 		return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
 	}
+	
+	@RequestMapping(value = "/player/{id}/upvote", method = RequestMethod.GET)
+	public ResponseEntity<Player> upvotePlayer(@PathVariable("id") long id) {
+		Player currentPlayer = playerService.findById(id);
+		
+		if (currentPlayer == null) {
+			System.out.println("Player with id " + id + " not found");
+			return new ResponseEntity<Player>(HttpStatus.NOT_FOUND);
+		}
+		
+		playerService.upvotePlayer(currentPlayer);
+		return new ResponseEntity<Player>(currentPlayer, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/player/{id}/downvote", method = RequestMethod.GET)
+	public ResponseEntity<Player> downvotePlayer(@PathVariable("id") long id) {
+		Player currentPlayer = playerService.findById(id);
+		
+		if (currentPlayer == null) {
+			System.out.println("Player with id " + id + " not found");
+			return new ResponseEntity<Player>(HttpStatus.NOT_FOUND);
+		}
+		
+		playerService.downvotePlayer(currentPlayer);
+		return new ResponseEntity<Player>(currentPlayer, HttpStatus.OK);
+	}
 
 }

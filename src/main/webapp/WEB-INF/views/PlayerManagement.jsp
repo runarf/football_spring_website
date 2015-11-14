@@ -34,6 +34,8 @@
 					<th>Team</th>
 					<th>Nationality</th>
 					<th>Image</th>
+					<th>Votes</th>
+					<th>Upvote/Downvote</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -43,6 +45,11 @@
 					<td><span ng-bind="p.team"></span></td>
 					<td><span ng-bind="p.nationality"></span></td>
 					<td><img src="{{p.image}}" height="100"></td>
+					<td><span ng-bind="p.votes"></span></td>
+					<td>
+						<button type="button" ng-click="ctrl.upvotePlayer(p.id)">Upvote</button>
+						<button type="button" ng-click="ctrl.downvotePlayer(p.id)">Downvote</button>
+					</td>
 				</tr>
 			</tbody>
 		</table>
