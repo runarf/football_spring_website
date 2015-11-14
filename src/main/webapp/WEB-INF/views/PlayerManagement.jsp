@@ -8,6 +8,18 @@
 </head>
 <body ng-app="myApp">
 	<div ng-controller="PlayerController as ctrl">
+	
+	<form ng-submit="ctrl.submit()" name="myForm">
+		<input type="hidden" ng-model="ctrl.player.id" />
+		<label>Name</label>
+		<input type="text" ng-model="ctrl.player.name" name="pname" placeholder="Enter the players name" required ng-minlength="3"/>
+		<label>Team</label>
+		<input type="text" ng-model="ctrl.player.team" placeholder="Enter the team of the player" required ng-minlength="3" />
+		<label>Nationality</label>
+		<input type="text" ng-model="ctrl.player.nationality" placeholder="Enter nationality of the player" required ng-minlength="3" />
+		<input type="submit" value="Add" ng-disabled="myForm.$invalid">
+		<button type="button" ng-click="ctrl.reset()" ng-disabled="myForm.$pristine">Reset Form</button>
+	</form>
 		<table>
 			<thead>
 				<tr>

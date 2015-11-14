@@ -16,7 +16,7 @@ App.factory('PlayerService', ['$http', '$q', function($http, $q) {
 		},
 
 		createPlayer: function(player) {
-			return $http.post('http://localhost:8080/football/player', player)
+			return $http.post('http://localhost:8080/football/player/', player)
 			.then(
 					function(response) {
 						return response.data;
