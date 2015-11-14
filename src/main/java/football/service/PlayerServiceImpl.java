@@ -52,9 +52,9 @@ public class PlayerServiceImpl implements PlayerService {
 	
 	private static List<Player> populateDummyPlayers() {
 		List<Player> players = new ArrayList<Player>();
-		players.add(new Player(counter.incrementAndGet(), "Rooney", "Manchester United", "English"));
-		players.add(new Player(counter.incrementAndGet(), "Christiano Ronaldo", "Real Madrid", "Portuguis"));
-		players.add(new Player(counter.incrementAndGet(), "Lionel Messi", "Barcelona", "Argentinian"));
+		players.add(new Player(counter.incrementAndGet(), "Wayne Rooney", "Manchester United", "English", "http://static.independent.co.uk/s3fs-public/thumbnails/image/2014/09/27/16/Wayne_Rooney-2.jpg"));
+		players.add(new Player(counter.incrementAndGet(), "Christiano Ronaldo", "Real Madrid", "Portuguis", "http://i1.mirror.co.uk/incoming/article6129031.ece/ALTERNATES/s1227b/Manchester-City-vs-Real-Madrid.jpg"));
+		players.add(new Player(counter.incrementAndGet(), "Lionel Messi", "Barcelona", "Argentinian", "http://images.performgroup.com/di/library/GOAL_INTERNATIONAL/2d/4b/lionel-messi-thomas-muller-barcelona-bayern-munich-champions-league-06052015_1dzp64uc807ve19p95c28l0daq.jpg?t=718739109&w=620&h=430" ));
 		return players;
 	}
 }

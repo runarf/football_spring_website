@@ -1,5 +1,7 @@
 package football.config;
 
+import javax.servlet.Filter;
+
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class FootballWebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
@@ -17,5 +19,11 @@ public class FootballWebAppInitializer extends AbstractAnnotationConfigDispatche
 	@Override
 	protected String[] getServletMappings() {
 		return new String[] { "/" };
+	}
+	
+	@Override
+	protected Filter[] getServletFilters() {
+		Filter[] singleton = { new CORSFilter() };
+		return singleton;
 	}
 }

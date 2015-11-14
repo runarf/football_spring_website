@@ -5,16 +5,18 @@ public class Player {
 	private String name;
 	private String team;
 	private String nationality;
+	private String image;
 	
 	public Player() {
 		id = 0;
 	}
 	
-	public Player(long id, String name, String team, String nationality) {
+	public Player(long id, String name, String team, String nationality, String image) {
 		this.id = id;
 		this.name = name;
 		this.team = team;
 		this.nationality = nationality;
+		this.image = image;
 	}
 	
 	public long getId() {
@@ -47,6 +49,14 @@ public class Player {
 	
 	public void setNationality(String nationality) {
 		this.nationality = nationality;
+	}
+	
+	public String getImage() {
+		return image;
+	}
+	
+	public void setImage(String image) {
+		this.image = image;
 	}
 	
 	@Override

@@ -5,7 +5,7 @@ App.controller('PlayerController', ['$scope', 'PlayerService', function($scope, 
 	self.player = { id: null, name: '', team: '', nationality: ''};
 	self.players = [];
 
-	self.fetchAllUsers = function() {
+	self.fetchAllPlayers = function() {
 		PlayerService.fetchAllPlayers()
 		.then(
 				function(d) {
@@ -27,7 +27,7 @@ App.controller('PlayerController', ['$scope', 'PlayerService', function($scope, 
 		);
 	};
 	
-	self.fetchAllUsers();
+	self.fetchAllPlayers();
 	
 	self.submit = function() {
 		if(self.player.id == null) {
