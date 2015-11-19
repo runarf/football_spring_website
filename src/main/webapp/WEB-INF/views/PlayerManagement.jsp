@@ -40,12 +40,12 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="p in ctrl.players">
+				<tr ng-repeat="p in ctrl.players | orderObjectBy:'votes':true">
 					<td><span ng-bind="p.id"></span></td>
 					<td><span ng-bind="p.name"></span></td>
 					<td><span ng-bind="p.team"></span></td>
 					<td><span ng-bind="p.nationality"></span></td>
-					<td><img src="{{p.image}}" height="100"></td>
+					<td><img ng-src="{{p.image}}" height="100"></td>
 					<td><span ng-bind="p.votes"></span></td>
 					<td>
 						<button type="button" ng-click="ctrl.upvotePlayer(p.id)">Upvote</button>
@@ -61,9 +61,11 @@
 
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
+	
 	<script src="<c:url value='/static/js/app.js' />"></script>
 	<script src="<c:url value='/static/js/service/player_service.js' />"></script>
 	<script
 		src="<c:url value='/static/js/controller/player_controller.js' />"></script>
+	<script src="<c:url value='/static/js/helper/player_helper.js' />"></script>
 </body>
 </html>

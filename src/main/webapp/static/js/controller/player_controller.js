@@ -6,6 +6,7 @@ App.controller('PlayerController', ['$scope', 'PlayerService', function($scope, 
 	self.players = [];
 
 	self.fetchAllPlayers = function() {
+		console.log("Im updated");
 		PlayerService.fetchAllPlayers()
 		.then(
 				function(d) {
@@ -18,6 +19,7 @@ App.controller('PlayerController', ['$scope', 'PlayerService', function($scope, 
 	};
 
 	self.createPlayer = function(player) {
+		console.log()
 		PlayerService.createPlayer(player)
 		.then(
 				self.fetchAllPlayers,

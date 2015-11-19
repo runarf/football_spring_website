@@ -3,7 +3,7 @@
 App.factory('PlayerService', ['$http', '$q', function($http, $q) {
 	return {
 		fetchAllPlayers: function() {
-			return $http.get('http://localhost:8080/football/player/')
+			return $http.get('/football/player/')
 			.then(
 					function(response) {
 						return response.data;
@@ -16,7 +16,7 @@ App.factory('PlayerService', ['$http', '$q', function($http, $q) {
 		},
 
 		createPlayer: function(player) {
-			return $http.post('http://localhost:8080/football/player/', player)
+			return $http.post('/football/player/', player)
 			.then(
 					function(response) {
 						return response.data;
@@ -29,7 +29,7 @@ App.factory('PlayerService', ['$http', '$q', function($http, $q) {
 		},
 		
 		upvotePlayer: function(id) {
-			return $http.get('http://localhost:8080/football/player/' + id + '/upvote/')
+			return $http.get('/football/player/' + id + '/upvote/')
 			.then(
 					function(response) {
 						return response.data;
@@ -42,7 +42,7 @@ App.factory('PlayerService', ['$http', '$q', function($http, $q) {
 		},
 		
 		downvotePlayer: function(id) {
-			return $http.get('http://localhost:8080/football/player/' + id + '/downvote/')
+			return $http.get('/football/player/' + id + '/downvote/')
 			.then(
 					function(response) {
 						return response.data;
@@ -55,7 +55,7 @@ App.factory('PlayerService', ['$http', '$q', function($http, $q) {
 		},
 		
 		deletePlayer: function(id) {
-			return $http.delete('http://localhost:8080/football/player/' + id)
+			return $http.delete('/football/player/' + id)
 			.then(
 					function(response) {
 						return response.data;
